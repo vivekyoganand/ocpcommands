@@ -1,0 +1,3 @@
+Do changes in all the pods
+==
+$ oc get pods -l component=fluentd -oname | sed -e 's/^pod\///' | xargs -n 1 -I{}  oc exec {} -- sh -c 'ls -l /var/lib/fluentd/buffer-output-es-config.output_tag.*.log'
